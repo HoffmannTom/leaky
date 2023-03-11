@@ -1,0 +1,60 @@
+<html>
+    <head>
+        <meta charset="utf-8" />
+        {% load static %}
+
+        <link rel="stylesheet" href="{% static 'root/style.css' %}">
+        <title>Maintain tasks</title>
+
+        <script type="text/javascript">
+            function deleteTask(id)
+            {
+                document.getElementById("task_to_delete_id").value = id;
+                document.getElementById("delete_task").submit();
+            }
+        </script>
+    </head>
+    <body>    
+        <a href="{% url 'root:index' %}"><img src="{% static 'root/images/home.png' %}" /> </a>
+        <h1>Broken access control</h1>
+
+        {% if messages %}
+        {% for message in messages %}
+            <p class="msg_{{message.level}}" >{{ message }}</p><br/>
+        {% endfor %}
+        {% endif %}
+
+
+        Here are your tasks:
+        {% if tasks %}
+        <ul>
+        {% for task in tasks %}
+            <li>{{ task.todo }} till {{ task.due_date }} <a href="javascript:deleteTask({{ task.id }})">delete</a></li>
+        {% endfor %}
+        </ul>
+        {% else %}
+            <p>No tasks available</p>
+        {% endif %}
+        <br/>
+        You can add and delete personal tasks. The delete link is however not secure.
+        <form action="{% url 'root:add_task' %}" method="post">
+            {% csrf_token %}
+            <p>
+                <label for="id_task">Task:</label>
+                <input type="text" name="todo" value="" required id="id_task" required>
+            </p>
+            <p>
+                <label for="id_due_date">Due till:</label>
+                <input type="date" name="due_date" id="id_due_date" required min="{% now 'Y-m-d' %}">
+            </p>
+        
+            <input type="submit" value="Create task">
+        </form>
+
+
+        <form id="delete_task" action="{% url 'root:delete_task' %}" method="post">
+            {% csrf_token %}
+            <input type="hidden" id="task_to_delete_id" name="id" value="">
+        </form>
+    </body>
+</html>

@@ -1,0 +1,59 @@
+<html>
+    <head>
+        <meta charset="utf-8" />
+        {% load static %}
+
+        <link rel="stylesheet" href="{% static 'root/style.css' %}">
+        <title>Shopping list</title>
+
+        <script type="text/javascript">
+            function deleteItem(id)
+            {
+                document.getElementById("item_to_delete_id").value = id;
+                document.getElementById("delete_item").submit();
+            }
+        </script>
+    </head>
+    <body>    
+        <a href="{% url 'root:index' %}"><img src="{% static 'root/images/home.png' %}" /> </a>
+        <h1>CSRF example with a shopping list</h1>
+
+        {% if messages %}
+        {% for message in messages %}
+            <p class="msg_{{message.level}}" >{{ message }}</p><br/>
+        {% endfor %}
+        {% endif %}
+
+
+        Here are your items:
+        {% if items %}
+        <ul>
+        {% for item in items %}
+            <li>{{ item.item }} ( {{ item.amount }} ) <a href="javascript:deleteItem({{ item.id }})">delete</a></li>
+        {% endfor %}
+        </ul>
+        {% else %}
+            <p>No items noted for buying</p>
+        {% endif %}
+        <br/>
+        You can add and delete items to/from your shopping list.
+        <form action="{% url 'root:add_item' %}" method="post">
+            {% csrf_token %}
+            <p>
+                <label for="id_item">Item:</label>
+                <input type="text" name="item" value="" required id="id_item" required>
+            </p>
+            <p>
+                <label for="id_amount">Amount:</label>
+                <input type="number" name="amount" id="id_amount" required value="1" min="1" max="100">
+            </p>
+        
+            <input type="submit" value="Add item to shopping list">
+        </form>
+
+
+        <form id="delete_item" action="{% url 'root:delete_item' %}" method="post">
+            <input type="hidden" id="item_to_delete_id" name="id" value="">
+        </form>
+    </body>
+</html>

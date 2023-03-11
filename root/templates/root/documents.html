@@ -1,0 +1,29 @@
+<html>
+    <head>
+        <meta charset="utf-8" />
+        {% load static %}
+
+        <link rel="stylesheet" href="{% static 'root/style.css' %}">
+        <title>File management</title>
+    </head>
+    <body>   
+        <a href="{% url 'root:index' %}"><img src="{% static 'root/images/home.png' %}" /> </a>
+        <h1>Up- and download of files</h1>
+        Here you can up- and download files like pictures. The download link can be exploited.<br/>
+        {{ error }}
+        <ul>
+            {% for fu in FileUploads %}
+            <li>{{ fu.title }} - {{ fu.orig_filename }} <a href="{% url 'root:download_file' %}?file={{ fu.filename|urlencode }}">download</a></li>
+            <!-- fix -->
+            <!-- <li>{{ fu.title }} - {{ fu.orig_filename }} <a href="{% url 'root:download_file' %}?file_id={{ fu.id }}">download</a></li> -->
+            {% endfor %}
+        </ul>
+        <form enctype="multipart/form-data" action="{% url 'root:upload_file' %}" method="post">
+            {% csrf_token %}
+
+            {{ form.as_p }}
+
+            <input type="submit" value="Upload">
+        </form>
+    </body>
+</html>

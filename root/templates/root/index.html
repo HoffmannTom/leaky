@@ -1,0 +1,22 @@
+<html>
+    <head>
+        <meta charset="utf-8" />
+        {% load static %}
+
+        <link rel="stylesheet" href="{% static 'root/style.css' %}">
+        <title>Startpage</title>
+    </head>
+    <body>    
+        <h1>Flaws from the OWASP Top-10 list 2021</h1>
+        This app shows common security flaws in web applications.<br/><br/><br/>
+        <a href="{% url 'root:documents' %}">Flaw 1: Injection flaw, document up- and download </a>
+        <br/>
+        <a href="{% url 'root:invalid_call' %}">Flaw 2: Security misconfiguration</a>
+        <br/>
+        <a href="{% url 'root:tasks' %}">Flaw 3: Broken access control / maintain tasks</a>
+        <br/>
+        <a href="{% url 'root:high_security_page' %}">Flaw 4: Security Logging and Monitoring, enter confidential area
+        <br/>
+        <a href="{% url 'root:shoppinglist' %}">Flaw 5: CSRF with a shoppling list    
+    </body>
+</html>

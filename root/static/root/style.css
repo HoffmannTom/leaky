@@ -1,0 +1,19 @@
+li a {
+    color: green;
+}
+
+body {
+    background: white url("images/background.jpg") repeat;  
+}
+
+.msg_25 {
+    color:green;
+}
+
+.msg_40 {
+    color:red;
+}
+
+.msg_30 {
+    color:orange;
+}
