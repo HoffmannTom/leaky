@@ -53,6 +53,7 @@
 
 
         <form id="delete_item" action="{% url 'root:delete_item' %}" method="post">
+            <!-- {% csrf_token %} -->
             <input type="hidden" id="item_to_delete_id" name="id" value="">
         </form>
     </body>
