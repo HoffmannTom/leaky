@@ -6,11 +6,11 @@ This project was created for the course "Cyber Security Base 2023" of the univer
 For details, see https://cybersecuritybase.mooc.fi/module-3.1  
 
 The app demonstrates five common mistakes:
-- Injection
-- Security Misconfiguration
-- Broken access control
-- Security Logging and Monitoring Failures
-- CSRF
+1) Injection
+2) Security Misconfiguration
+3) Broken access control
+4) Security Logging and Monitoring Failures
+5) CSRF
 
 # Creation of app users
 Creating user can be accomplished via a Python shell:  
