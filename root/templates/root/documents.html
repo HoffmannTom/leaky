@@ -10,7 +10,9 @@
         <a href="{% url 'root:index' %}"><img src="{% static 'root/images/home.png' %}" /> </a>
         <h1>Up- and download of files</h1>
         Here you can up- and download files like pictures. The download link can be exploited.<br/>
-        {{ error }}
+        {% for message in messages %}
+            <p class="msg_{{message.level}}" >{{ message }}</p>
+        {% endfor %}
         <ul>
             {% for fu in FileUploads %}
             <li>{{ fu.title }} - {{ fu.orig_filename }} <a href="{% url 'root:download_file' %}?file={{ fu.filename|urlencode }}">download</a></li>

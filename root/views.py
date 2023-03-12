@@ -64,8 +64,8 @@ def upload_file(request):
 
             return HttpResponseRedirect(reverse('root:documents'))
         # else: # fix
-        #    context['error'] = "Received form was invalid"         # fix
-        #    return render(request, 'root/documents.html', context) # fix
+        #    messages.error(request, 'Received form was invalid!')  # fix
+        #    return HttpResponseRedirect(reverse('root:documents')) # fix
     else:
         return HttpResponseRedirect(reverse('root:documents'))
 
