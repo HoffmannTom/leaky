@@ -8,11 +8,11 @@ WORKDIR /usr/src/app
 # install python with pip
 RUN apt-get update && apt-get -y install python3-pip
 
+# install django
+RUN pip install django
+
 # copy sources
 COPY . .
-
-# install django 
-RUN pip install django
 
 CMD ["python3", "manage.py", "runserver", "0.0.0.0:8000"]
 
