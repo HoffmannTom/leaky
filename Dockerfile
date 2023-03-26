@@ -11,7 +11,6 @@ RUN apt-get update && apt-get -y install python3-pip
 # install django
 RUN pip install django
 
-
 # copy sources
 COPY . .
 
