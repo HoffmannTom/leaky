@@ -1,5 +1,6 @@
 # leaky
-A sample project with Django to show common programming mistakes in web applications.
+A sample project with Django to show common programming mistakes in web applications.  
+The application gets automatically deployed at https://leaky.onrender.com.
 
 # Background
 This project was created for the course "Cyber Security Base 2023" of the university of Helsinki.  
