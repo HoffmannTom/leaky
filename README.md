@@ -1,5 +1,6 @@
 # leaky
-A sample project with Django to show common programming mistakes in web applications.
+A sample project with Django to show common programming mistakes in web applications.  
+The application gets automatically deployed at https://leaky.onrender.com.
 
 # Background
 This project was created for the course "Cyber Security Base 2023" of the university of Helsinki.  
@@ -13,10 +14,12 @@ The app demonstrates five common mistakes:
 5) CSRF
 
 # Creation of app users
-Creating user can be accomplished via a Python shell:  
+Creating user can be accomplished via a Python shell: 
+```
 python manage.py shell   
 from django.contrib.auth.models import User  
 user = User.objects.create_user('Alice', None,'Alice')  
 user = User.objects.create_user('Bob', None,'Bob')  
 user.save()  
 exit()  
+```
