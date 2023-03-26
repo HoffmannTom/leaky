@@ -1,4 +1,6 @@
 include LICENSE
-include README.rst
+include README.md
+include manage.py
+include db.sqlite3
 recursive-include root/static *
 recursive-include root/templates *
